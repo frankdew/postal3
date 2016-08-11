@@ -16,4 +16,10 @@ class PostsController < ApplicationController
       render posts_path
     end
   end
+
+  def user
+      @user = User.find( params[:user_id] )
+
+      @posts = Post.where( user: @user ).order( created_at: :desc )
+   end
 end
